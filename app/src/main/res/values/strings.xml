@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">AppAgenda</string>
+    <string name="endere_o">Endereço:</string>
+    <string name="nome">Nome:</string>
+    <string name="telefone">Telefone:</string>
+    <string name="email">Email:</string>
+    <string name="site">Site:</string>
+    <string name="data_nascimento">Data Nascimento:</string> <!-- Stract String Resource, lampada no xml do layout -->
+</resources>
+
