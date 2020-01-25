@@ -2,12 +2,13 @@ package br.aula.database
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
+import br.aula.database.ConstantsDb.CONTATOS_DB_NAME
 import br.aula.database.ConstantsDb.CONTATOS_DB_TABLE
 import org.jetbrains.anko.db.*
 
 class BancoDadosHelper(context: Context) :
     ManagedSQLiteOpenHelper(ctx = context ,
-        name = "agenda.db",  version = 1) {
+        name = CONTATOS_DB_NAME,  version = 1) {
     private val scriptSQLCreate = arrayOf(
         "INSERT INTO $CONTATOS_DB_TABLE VALUES(1,'fernando.collor@gmail.com','Fernando Collor','R. Assungui, 27, Cursino, São Paulo, 04131-000, Brasil',800200300,NULL,'www.google.com.br',NULL);",
         "INSERT INTO $CONTATOS_DB_TABLE VALUES(2,'dilma@gmail.com','Dilma','R. José Cocciuffo, 90 - Cursino, São Paulo, 04121-120, Brasil',800235468,NULL,'www.uol.com.br',NULL);",
