@@ -169,6 +169,13 @@
                     android:layout_height="wrap_content"
                     android:layout_span="2"
                     android:text="Salvar" />
+
+                <Button
+                    android:id="@+id/btnDeletar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_span="2"
+                    android:text="Apagar" />
                 <!-- android:layout_column="1" -->
             </TableRow>
         </TableLayout>

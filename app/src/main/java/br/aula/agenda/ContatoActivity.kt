@@ -83,6 +83,7 @@ class ContatoActivity : AppCompatActivity() {
             }
             finish()
         }
+
     }
     private fun updateDateInView() {
         val myFormat = "dd/MM/yyyy" // mention the format you need
