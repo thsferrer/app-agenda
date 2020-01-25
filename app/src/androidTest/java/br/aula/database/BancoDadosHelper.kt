@@ -47,7 +47,6 @@ class BancoDadosHelper(context: Context) :
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         db.dropTable("$CONTATOS_DB_NAME", true)
         onCreate(db)
-
     }
 }
     val Context.database: BancoDadosHelper get() = BancoDadosHelper.getInstance(getApplicationContext())
