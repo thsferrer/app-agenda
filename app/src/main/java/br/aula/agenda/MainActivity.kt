@@ -64,6 +64,20 @@ class MainActivity : AppCompatActivity() {
 
             else -> return super.onOptionsItemSelected(item)
         }
+
+    }
+    override fun onResume() {
+        super.onResume()
+        val contatos = ContatoRepository(this).findAll()
+        val adapter= ArrayAdapter(this, android.R.layout.simple_list_item_1, contatos)
+        lista?.adapter = adapter
+        adapter.notifyDataSetChanged()
+
+        lista.setOnItemClickListener { _, _, position, id ->
+            val intent = Intent(this, ContatoActivity::class.java)
+            intent.putExtra("contato", contatos?.get(position))
+            startActivity(intent)
+        }
     }
 
 }
