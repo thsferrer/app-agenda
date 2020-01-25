@@ -1,9 +1,9 @@
-package br.aula.database
+package br.aula.agenda.bd
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
-import br.aula.database.ConstantsDb.CONTATOS_DB_NAME
-import br.aula.database.ConstantsDb.CONTATOS_DB_TABLE
+import br.aula.agenda.bd.ConstantsDb.CONTATOS_DB_NAME
+import br.aula.agenda.bd.ConstantsDb.CONTATOS_DB_TABLE
 import org.jetbrains.anko.db.*
 
 class BancoDadosHelper(context: Context) :
@@ -22,7 +22,8 @@ class BancoDadosHelper(context: Context) :
         @Synchronized
         fun getInstance(ctx: Context): BancoDadosHelper {
             if (instance == null) {
-                instance = BancoDadosHelper(ctx.getApplicationContext())
+                instance =
+                    BancoDadosHelper(ctx.getApplicationContext())
             }
             return instance!!
         }
@@ -49,4 +50,7 @@ class BancoDadosHelper(context: Context) :
         onCreate(db)
     }
 }
-    val Context.database: BancoDadosHelper get() = BancoDadosHelper.getInstance(getApplicationContext())
+    val Context.database: BancoDadosHelper
+        get() = BancoDadosHelper.getInstance(
+            getApplicationContext()
+        )

@@ -8,6 +8,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import br.aula.agenda.bd.ContatoRepository
 import kotlinx.android.synthetic.main.activity_main.*
 // Compat é utilizado para que os componentes sejam compatíveis com todos os telefones
 class MainActivity : AppCompatActivity() {
@@ -21,14 +22,12 @@ class MainActivity : AppCompatActivity() {
         myToolbar.setTitleTextColor(Color.WHITE)
         setSupportActionBar(myToolbar)
 
-        val contatos = arrayOf("Maria", "José", "Carlos")
+        val contatos = ContatoRepository(this).findAll()
         val adapter
                 = ArrayAdapter(this, android.R.layout.simple_list_item_1, contatos)
 
         var listaContatos = lista // lista corresponde ao id que está no layout no componente ListView
-        listaContatos.setAdapter(adapter);
-        // Poderia deixar apenas conforme abaixo:
-        // lista.setAdapter(adapter);
+        lista.adapter = adapter
     }
     // Trabalhando com menus na aplicação
     // Criar um método override para poder customiza-lo. Irá controlar o listener.

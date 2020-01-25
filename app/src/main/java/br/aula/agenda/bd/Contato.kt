@@ -1,4 +1,4 @@
-package br.aula.database
+package br.aula.agenda.bd
 
 import java.io.Serializable
 

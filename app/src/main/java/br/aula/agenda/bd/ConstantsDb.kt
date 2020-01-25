@@ -1,4 +1,4 @@
-package br.aula.database
+package br.aula.agenda.bd
 
 object ConstantsDb {
     const val CONTATOS_DB_NAME = "agenda.db"
