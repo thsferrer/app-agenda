@@ -28,11 +28,15 @@ class ContatoActivity : AppCompatActivity() {
         if(intent != null){
             if(intent.getSerializableExtra("contato") != null){
                 contato = intent.getSerializableExtra("contato") as Contato
-
                 txtNome?.setText(contato?.nome)
                 txtEndereco?.setText(contato?.endereco)
+                txtTelefone?.setText(contato?.telefone?.toString())
+                //dataNascimento = cal.timeInMillis,
                 txtEmail?.setText(contato?.email)
                 txtSite?.setText(contato?.site)
+            }
+            else{
+                contato = Contato()
             }
         }
 
@@ -69,15 +73,18 @@ class ContatoActivity : AppCompatActivity() {
         })
 
         btnCadastro?.setOnClickListener {
-            val contato = Contato(
-                nome = txtNome?.text.toString(),
-                endereco = txtEndereco?.text.toString(),
-                telefone = txtTelefone?.text.toString().toLong(),
-                dataNascimento = cal.timeInMillis,
-                email = txtEmail?.text.toString(),
-                site = txtSite?.text.toString())
+                contato?.nome = txtNome?.text.toString()
+                contato?.endereco = txtEndereco?.text.toString()
+                contato?.telefone = txtTelefone?.text.toString().toLong()
+                contato?.dataNascimento = cal.timeInMillis
+                contato?.email = txtEmail?.text.toString()
+                contato?.site = txtSite?.text.toString()
 
-            ContatoRepository(this).create(contato)
+            if(contato?.id?.toInt() == 0){
+                ContatoRepository(this).create(contato!!)
+            }else{
+                ContatoRepository(this).update(contato!!)
+            }
             finish()
         }
     }
