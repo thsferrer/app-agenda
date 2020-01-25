@@ -8,6 +8,7 @@ class BancoDadosHelper(context: Context) :
     ManagedSQLiteOpenHelper(ctx = context ,
         name = "agenda.db",  version = 1) {
 
+    // cria uma tabela no banco de dados
     override fun onCreate(db: SQLiteDatabase) {
         db.createTable("agenda", true,
             "id" to INTEGER + PRIMARY_KEY + UNIQUE,
@@ -22,7 +23,8 @@ class BancoDadosHelper(context: Context) :
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        // Atualização do banco de dados
+        TODO("not implemented")
+
     }
 
 }
