@@ -11,29 +11,24 @@ class ContatoRepository(val context: Context) {
 
     fun findAll(): ArrayList<Contato> = context.database.use {
         val contatos = ArrayList<Contato>()
-        select(CONTATOS_DB_TABLE,
-            "id",
-            "email",
-            "endereco",
-            "nome",
-            "telefone",
-            "datanascimento",
-            "site",
-            "foto"
-        )
-            .parseList(object : MapRowParser<List<Contato>> {
+
+        select(CONTATOS_DB_TABLE, "id", "email", "endereco", "nome", "telefone", "datanascimento", "site", "foto")
+            .parseList(object: MapRowParser<List<Contato>> {
                 override fun parseRow(columns: Map<String, Any?>): List<Contato> {
                     val contato = Contato(
-                    id = columns.getValue("id").toString()?.toLong(),
-                    nome = columns.getValue("nome")as String,
-                    endereco = columns.getValue("endereco") as String,
-                    email = columns.getValue("email") as String,
-                    site = columns.getValue("site") as String)
-
+                        id = columns.getValue("id").toString()?.toLong(),
+                        foto = columns.getValue("foto")?.toString(),
+                        nome = columns.getValue("nome")?.toString(),
+                        endereco = columns.getValue("endereco")?.toString(),
+                        telefone = columns.getValue("telefone")?.toString()?.toLong(),
+                        dataNascimento = columns.getValue("datanascimento")?.toString()?.toLong(),
+                        email = columns.getValue("email")?.toString(),
+                        site = columns.getValue("site")?.toString())
                     contatos.add(contato)
                     return contatos
                 }
             })
+
         contatos
     }
 

@@ -26,7 +26,7 @@ class ContatoActivity : AppCompatActivity() {
         setSupportActionBar(myChildToolbar)
 
         if(intent != null){
-            if(intent.getSerializableExtra("contato") != null){
+            if(intent?.getSerializableExtra("contato") != null){
                 contato = intent.getSerializableExtra("contato") as Contato
                 txtNome?.setText(contato?.nome)
                 txtEndereco?.setText(contato?.endereco)
@@ -48,10 +48,8 @@ class ContatoActivity : AppCompatActivity() {
 
         // Componente para escolher a data e mostrar, já deixa setada uma data de início no calendário
         val dateSetListener = object : DatePickerDialog.OnDateSetListener {
-            override fun onDateSet(
-                view: DatePicker, year: Int, monthOfYear: Int,
-                dayOfMonth: Int
-            ) {
+            override fun onDateSet(view: DatePicker, year: Int, monthOfYear: Int,
+                                   dayOfMonth: Int) {
                 cal.set(Calendar.YEAR, year)
                 cal.set(Calendar.MONTH, monthOfYear)
                 cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
@@ -61,14 +59,12 @@ class ContatoActivity : AppCompatActivity() {
 
         txtDatanascimento.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View) {
-                DatePickerDialog(
-                    this@ContatoActivity,
+                DatePickerDialog(this@ContatoActivity,
                     dateSetListener,
                     // set DatePickerDialog to point to today's date when it loads up
                     cal.get(Calendar.YEAR),
                     cal.get(Calendar.MONTH),
-                    cal.get(Calendar.DAY_OF_MONTH)
-                ).show()
+                    cal.get(Calendar.DAY_OF_MONTH)).show()
             }
         })
 
@@ -88,9 +84,9 @@ class ContatoActivity : AppCompatActivity() {
             finish()
         }
     }
-        private fun updateDateInView() {
-            val myFormat = "dd/MM/yyyy" // mention the format you need
-            val sdf = SimpleDateFormat(myFormat, Locale.US)
-            datanascimento!!.text = sdf.format(cal.getTime())
-        }
+    private fun updateDateInView() {
+        val myFormat = "dd/MM/yyyy" // mention the format you need
+        val sdf = SimpleDateFormat(myFormat, Locale.US)
+        txtDatanascimento.text = sdf.format(cal.getTime())
+    }
 }
