@@ -24,7 +24,7 @@ class ContatoActivity : AppCompatActivity() {
 
         val myChildToolbar = toolbar_child
         setSupportActionBar(myChildToolbar)
-
+            //teste git
         if(intent != null){
             if(intent?.getSerializableExtra("contato") != null){
                 contato = intent.getSerializableExtra("contato") as Contato
