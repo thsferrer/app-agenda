@@ -19,7 +19,6 @@ class BancoDadosHelper(context: Context) :
             return instance!!
         }
     }
-
     override fun onCreate(db: SQLiteDatabase) {
         // cria uma tabela no banco de dados
         db.createTable("agenda", true,
@@ -33,9 +32,7 @@ class BancoDadosHelper(context: Context) :
             "foto" to TEXT
         )
     }
-
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         TODO("not implemented")
-
     }
 }
